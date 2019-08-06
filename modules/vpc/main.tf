@@ -8,7 +8,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_support = "${var.enable-dns-support}"
   enable_dns_hostnames = "${var.enable-dns-hostnames}"
 
-  tags {
+  tags = {
     Name= "${var.vpc-name}"
     Location= "${var.vpc-location}"
   }
@@ -19,7 +19,7 @@ resource "aws_vpc" "vpc" {
 resource "aws_internet_gateway" "igw" {
   vpc_id = "${aws_vpc.vpc.id}"
 
-  tags {
+  tags = {
     Name = "${var.internet-gateway-name}"
 
   }
@@ -34,7 +34,7 @@ resource "aws_subnet" "public-subnets" {
   vpc_id = "${aws_vpc.vpc.id}"
   map_public_ip_on_launch = "${var.map_public_ip_on_launch}"
 
-  tags {
+  tags = {
     Name = "${var.public-subnets-name}-${count.index+1}"
     Location = "${var.public-subnets-location}"
   }
@@ -47,7 +47,7 @@ resource "aws_route_table" "public-routes" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.igw.id}"
   }
-  tags {
+  tags = {
     Name = "${var.public-subnet-routes-name}"
   }
 }
@@ -67,7 +67,7 @@ resource "aws_subnet" "private-subnets" {
   vpc_id = "${aws_vpc.vpc.id}"
 
 
-  tags {
+  tags = {
     Name = "${var.private-subnet-name}-${count.index+1}"
     Location = "${var.private-subnets-location-name}"
   }
@@ -76,7 +76,7 @@ resource "aws_subnet" "private-subnets" {
 #CREATING EIP NAT-GATEWAY FOR NAT-GATEWAY REDUNDANCY
 resource "aws_eip" "eip-ngw" {
   count = "${var.total-nat-gateway-required}"
-  tags {
+  tags = {
     Name = "${var.eip-for-nat-gateway-name}-${count.index+1}"
   }
 }
@@ -85,7 +85,7 @@ resource "aws_nat_gateway" "ngw" {
   count = "${var.total-nat-gateway-required}"
   allocation_id = "${element(aws_eip.eip-ngw.*.id,count.index)}"
   subnet_id = "${element(aws_subnet.public-subnets.*.id, count.index)}"
-  tags {
+  tags = {
     Name = "${var.nat-gateway-name}-${count.index+1}"
   }
 }
@@ -98,7 +98,7 @@ resource "aws_route_table" "private-routes" {
     cidr_block = "${var.private-route-cidr}"
     nat_gateway_id = "${element(aws_nat_gateway.ngw.*.id,count.index)}"
   }
-  tags {
+  tags = {
     Name = "${var.private-route-name}-${count.index+1}"
   }
 

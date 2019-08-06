@@ -14,7 +14,7 @@ module "vpc" {
   public-subnet-routes-name = "barclays-public-subnet-routes"
   private-subnets-location-name = "Ohio"
   private-subnet-name = "barclays-private-subnets"
-  total-nat-gateway-required = "1"
+  total-nat-gateway-required = "3"
   eip-for-nat-gateway-name = "barclays-eip-nat-gateway"
   nat-gateway-name = "barclays-nat-gateway"
   private-route-cidr = "0.0.0.0/0"

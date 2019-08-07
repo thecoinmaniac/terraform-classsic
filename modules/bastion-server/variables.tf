@@ -85,11 +85,11 @@ variable "private-key" {
   default = ""
 }
 
-data "aws_subnet_ids" "public-2" {
+data "aws_subnet_ids" "public-1" {
   vpc_id = "${var.vpc-id}"
 
   tags = {
-    Tier = "Public-2"
+    Name = "barclays-public-subnets-1"
   }
 }
 

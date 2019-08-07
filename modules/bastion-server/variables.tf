@@ -48,8 +48,7 @@ variable "public-key-file-name" {
 #EC2 VARIABLES
 #EC2 Subnet ID's for Subnets
 variable "ec2-subnets-ids" {
-  type = "list"
-  default = ["","",""]
+  default = ""
 }
 
 #PROVISIONERS START

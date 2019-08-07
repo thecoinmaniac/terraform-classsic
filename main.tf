@@ -52,7 +52,7 @@ module "bastion-server" {
   source = "./modules/bastion-server"
   region = "us-east-2"
   key-name = "bastion-key"
-  ami-id = "ami-08935252a36e25f85"
+  ami-id = "ami-02f706d959cedf892"
   instance-type = "t2.micro"
   amount = "1"
   public-key-file-name = "${file("./modules/bastion-server/bastion-key.pub")}"

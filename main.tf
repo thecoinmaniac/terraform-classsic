@@ -47,3 +47,26 @@ module "barclays-bastion-sg" {
 
   #NOTE: ONLY ALL PORTS WILL BE "" & CIDR BLOCK WILL IN COMMAS ""
 }
+
+module "bastion-server" {
+  source = "./modules/bastion-server"
+  region = "us-east-2"
+  key-name = "bastion-key"
+  ami-id = "ami-08935252a36e25f85"
+  instance-type = "t2.micro"
+  number-of-ec2-instances-required = "1"
+  public-key-file-name = "${file("./modules/bastion-server/bastion-key.pub")}"
+
+  instance-name-taq = "bastion-server"
+  associate-public-ip-address = "true"
+
+  vpc-security-group-ids = "${module.sg-bastion.ec2-sg-security-group}"
+  ec2-subnets-ids = ["${module.vpc.public-subnet-ids}"]
+
+  #IN CASE OF LAUNCHING EC2 IN SPECIFIC SUBNETS OR PRIVATE SUBNETS, PLEASE UN-COMMENT BELOW"
+  #ec2-subnets-ids = ["${module.cloudelligent-vpc.private-subnet-ids}"]
+  #ec2-subnets-ids = ["","","","","",""]
+  #user-data = "${file("./modules/ec2/httpd.sh")}"
+
+
+}

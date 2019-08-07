@@ -84,3 +84,11 @@ variable "user-name" {
 variable "private-key" {
   default = ""
 }
+
+data "aws_subnet_ids" "public-1" {
+  vpc_id = "${var.vpc_id}"
+
+  tags = {
+    Name = "barclays-public-subnets-1"
+  }
+}

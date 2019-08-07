@@ -92,3 +92,7 @@ data "aws_subnet_ids" "public-1" {
     Name = "barclays-public-subnets-1"
   }
 }
+
+variable "vpc-id" {
+  default = ""
+}

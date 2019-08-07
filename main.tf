@@ -55,6 +55,8 @@ module "sg-bastion" {
 
 module "bastion-server" {
   source = "./modules/bastion-server"
+
+  vpc-name = "barclays-vpc"
   region = "us-east-2"
   key-name = "bastion-key"
   ami-id = "ami-02f706d959cedf892"

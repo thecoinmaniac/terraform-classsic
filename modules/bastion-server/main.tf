@@ -2,6 +2,11 @@ provider "aws" {
   region = "${var.region}"
 }
 
+resource "aws_key_pair" "bastion-key" {
+  key_name   = "${var.key-name}"
+  public_key = "${var.public-key-file-name}"
+}
+
 #Creating an EC2 instance in Public Subnet must mention the "Subnet ID"#
 resource "aws_instance" "bastion-server" {
 

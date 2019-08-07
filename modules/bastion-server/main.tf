@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "${var.region}"
+}
+
 #Creating an EC2 instance in Public Subnet must mention the "Subnet ID"#
 resource "aws_instance" "bastion-server" {
 

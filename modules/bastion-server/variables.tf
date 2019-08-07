@@ -90,14 +90,14 @@ variable "vpc-name" {
 variable "vpc-id" {
   default = ""
 }
-data "aws_vpc" "selected" {
-  tags = {
-    Name = "${var.vpc-name}"
-  }
-}
-data "aws_subnet_ids" "public-1" {
-  vpc_id = "${data.aws_vpc.selected.id}"
-  tags = {
-    Name = "barclays-public-subnets-1"
-  }
-}
+# data "aws_vpc" "selected" {
+#   tags = {
+#     Name = "${var.vpc-name}"
+#   }
+# }
+# data "aws_subnet_ids" "public-1" {
+#   vpc_id = "${data.aws_vpc.selected.id}"
+#   tags = {
+#     Name = "barclays-public-subnets-1"
+#   }
+# }

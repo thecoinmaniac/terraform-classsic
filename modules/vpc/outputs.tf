@@ -50,3 +50,8 @@ output "aws-availability-zones" {
 output "aws-route-table-private-routes-id" {
   value = "${aws_route_table.private-routes.*.id}"
 }
+
+#OUTPUT OF PUBLIC SUBNET
+output "public-subnet-1" {
+  value = "${data.aws_subnet_ids.public-1.id}"
+}

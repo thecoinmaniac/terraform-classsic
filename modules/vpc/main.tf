@@ -37,7 +37,7 @@ resource "aws_subnet" "public-subnets" {
   tags = {
     Name = "${var.public-subnets-name}-${count.index+1}"
     Location = "${var.public-subnets-location}"
-    Tier = "Public"
+    Tier = "Public-${count.index+1}"
   }
 }
 
@@ -71,7 +71,7 @@ resource "aws_subnet" "private-subnets" {
   tags = {
     Name = "${var.private-subnet-name}-${count.index+1}"
     Location = "${var.private-subnets-location-name}"
-    Tier = "Private"
+    Tier = "Private-${count.index+1}"
   }
 }
 

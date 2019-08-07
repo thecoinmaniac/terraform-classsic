@@ -89,7 +89,7 @@ data "aws_subnet_ids" "public-2" {
   vpc_id = "${var.vpc-id}"
 
   tags = {
-    Name = "barclays-public-subnets-2"
+    Tier = "Public-2"
   }
 }
 

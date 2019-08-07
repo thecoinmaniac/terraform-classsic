@@ -12,8 +12,7 @@ output "igw" {
 #OUTPUT OF PUBLIC SUBNET IDS
 output "public-subnet-ids" {
   description = "Public Subnets IDS"
-  type = "string"
-  value = "${aws_subnet.public-subnets.*.id}"
+  value = ["${aws_subnet.public-subnets.*.id}"]
 }
 
 #OUTPUT OF EIP FOR NAT GATEWAYS

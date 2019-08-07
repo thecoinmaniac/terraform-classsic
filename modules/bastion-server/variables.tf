@@ -91,7 +91,7 @@ variable "vpc-id" {
   default = ""
 }
 data "aws_vpc" "selected" {
-  tags {
+  tags = {
     Name = "${var.vpc-name}"
   }
 }

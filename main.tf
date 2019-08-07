@@ -24,7 +24,7 @@ module "vpc" {
   vpc-private-subnet-cidr = ["10.11.4.0/24","10.11.5.0/24","10.11.6.0/24"]
 }
 
-module "barclays-bastion-sg" {
+module "sg-bastion" {
   source = "./modules/sg-bastion"
   region = "us-east-2"
   vpc-id = "${module.vpc.vpc-id}"

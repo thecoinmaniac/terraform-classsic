@@ -9,6 +9,10 @@ variable "ami-id" {
   default = ""
 }
 
+variable "amount" {
+  default = ""  
+}
+
 variable "instance-type" {
   default = ""
 }

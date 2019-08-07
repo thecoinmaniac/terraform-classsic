@@ -54,7 +54,7 @@ module "bastion-server" {
   key-name = "bastion-key"
   ami-id = "ami-08935252a36e25f85"
   instance-type = "t2.micro"
-  number-of-ec2-instances-required = "1"
+  amount = "1"
   public-key-file-name = "${file("./modules/bastion-server/bastion-key.pub")}"
 
   instance-name-taq = "bastion-server"

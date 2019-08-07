@@ -10,7 +10,7 @@ resource "aws_instance" "bastion-server" {
   instance_type = "${var.instance-type}"
 
 # Number of EC2-instances required.
-  count = "${var.number-of-ec2-instances-required}"
+  count = "${var.amount}"
 
   #EXISTING KEY PAIR OR CREATE ssh-keygen -f demo #it will give private & public keys, import public in aws
 

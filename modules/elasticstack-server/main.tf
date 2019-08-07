@@ -8,7 +8,7 @@ resource "aws_key_pair" "bastion-key" {
 }
 
 #Creating an EC2 instance in Public Subnet must mention the "Subnet ID"#
-resource "aws_instance" "bastion-server" {
+resource "aws_instance" "elasticstack-server" {
 
   ami = "${var.ami-id}"
 

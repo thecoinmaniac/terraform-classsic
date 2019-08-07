@@ -70,5 +70,52 @@ module "bastion-server" {
   #ec2-subnets-ids = ["","","","","",""]
   #user-data = "${file("./modules/ec2/httpd.sh")}"
 
+}
+
+module "elasticstack-server" {
+  source = "./modules/elasticstack-server"
+  region = "us-east-2"
+  key-name = "bastion-key"
+  ami-id = "ami-02f706d959cedf892"
+  instance-type = "t2.micro"
+  amount = "1"
+  public-key-file-name = "${file("./modules/bastion-server/bastion-key.pub")}"
+
+  instance-name-taq = "elasticstack-server"
+  associate-public-ip-address = "true"
+
+  vpc-security-group-ids = "${module.sg-bastion.ec2-sg-security-group}"
+  ec2-subnets-ids = "${module.vpc.public-subnet-ids}"
+
+  vpc-id = "${module.vpc.vpc-id}"
+
+  #IN CASE OF LAUNCHING EC2 IN SPECIFIC SUBNETS OR PRIVATE SUBNETS, PLEASE UN-COMMENT BELOW"
+  #ec2-subnets-ids = ["${module.cloudelligent-vpc.private-subnet-ids}"]
+  #ec2-subnets-ids = ["","","","","",""]
+  #user-data = "${file("./modules/ec2/httpd.sh")}"
+
+}
+
+module "jenkins-sonar-nexus-server" {
+  source = "./modules/jenkins-sonar-nexus-server"
+  region = "us-east-2"
+  key-name = "bastion-key"
+  ami-id = "ami-02f706d959cedf892"
+  instance-type = "t2.micro"
+  amount = "3"
+  public-key-file-name = "${file("./modules/bastion-server/bastion-key.pub")}"
+
+  instance-name-taq = "barclays-devops-server"
+  associate-public-ip-address = "true"
+
+  vpc-security-group-ids = "${module.sg-bastion.ec2-sg-security-group}"
+  ec2-subnets-ids = "${module.vpc.public-subnet-ids}"
+
+  vpc-id = "${module.vpc.vpc-id}"
+
+  #IN CASE OF LAUNCHING EC2 IN SPECIFIC SUBNETS OR PRIVATE SUBNETS, PLEASE UN-COMMENT BELOW"
+  #ec2-subnets-ids = ["${module.cloudelligent-vpc.private-subnet-ids}"]
+  #ec2-subnets-ids = ["","","","","",""]
+  #user-data = "${file("./modules/ec2/httpd.sh")}"
 
 }

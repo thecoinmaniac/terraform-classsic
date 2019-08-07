@@ -8,7 +8,7 @@ resource "aws_key_pair" "bastion-key" {
 }
 
 #Creating an EC2 instance in Public Subnet must mention the "Subnet ID"#
-resource "aws_instance" "bastion-server" {
+resource "aws_instance" "jenkins-sonar-nexus" {
 
   ami = "${var.ami-id}"
 
@@ -29,7 +29,7 @@ resource "aws_instance" "bastion-server" {
   user_data = "${var.user-data}"
 
 # MULTIPLE SUBNETS IDS
-  subnet_id = "${data.aws_subnet_ids.public-2.id}"
+  subnet_id = "${data.aws_subnet_ids.public-1.id}"
   vpc_security_group_ids = ["${var.vpc-security-group-ids}"]
   tags = {
     Name= "${var.instance-name-taq}-${count.index+1}"

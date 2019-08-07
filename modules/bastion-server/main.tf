@@ -29,7 +29,6 @@ resource "aws_instance" "bastion-server" {
   user_data = "${var.user-data}"
 
 # MULTIPLE SUBNETS IDS
-  vpc_id = "${var.vpc-id}"
   subnet_id = "${data.aws_subnet_ids.public-1.id}"
   vpc_security_group_ids = ["${var.vpc-security-group-ids}"]
   tags = {

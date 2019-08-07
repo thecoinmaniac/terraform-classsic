@@ -29,7 +29,7 @@ resource "aws_instance" "bastion-server" {
   user_data = "${var.user-data}"
 
 # MULTIPLE SUBNETS IDS
-  subnet_id = "${element(data.aws_subnet_ids.public-1.ids, count.index)}"
+  subnet_id = "${data.aws_subnet_ids.public-1.id}"
   vpc_security_group_ids = ["${var.vpc-security-group-ids}"]
   tags = {
     Name= "${var.instance-name-taq}-${count.index+1}"

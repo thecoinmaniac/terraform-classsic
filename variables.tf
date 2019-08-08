@@ -7,7 +7,7 @@ variable "vpc-id" {
 }
 
 data "aws_subnet_ids" "public-1" {
-  vpc_id = "${var.vpc_id}"
+  vpc_id = "${var.vpc-id}"
   filter {
     name   = "tag:Name"
     values = ["barclays-public-subnets-1"]       

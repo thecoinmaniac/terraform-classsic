@@ -89,11 +89,11 @@ variable "vpc-id" {
   default = ""
 }
 
-data "aws_subnet_ids" "public-1" {
+data "aws_subnet_ids" "public-2" {
   vpc_id = "${var.vpc-id}"
   filter {
     name   = "tag:Name"
-    values = ["barclays-public-subnets-1"]       
+    values = ["barclays-public-subnets-2"]       
   }
 }
 

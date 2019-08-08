@@ -1,3 +1,3 @@
-output "public-1" {
-  value = "${data.aws_subnet_ids.public-1.id}"
+output "public-2" {
+  value = "${data.aws_subnet_ids.public-2.id}"
 }

@@ -86,6 +86,4 @@ variable "vpc-name" {
 variable "vpc-id" {
   default = ""
 }
-variable "public-1" {
-  
-}
+

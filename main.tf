@@ -69,7 +69,7 @@ module "bastion-server" {
 
   vpc-security-group-ids = "${module.sg-bastion.ec2-sg-security-group}"
 # ec2-subnets-ids = "${module.vpc.public-subnet-ids}"
-  ec2-subnets-ids = "${data.aws_subnet_ids.public-1}"
+  ec2-subnets-ids = "${data.aws_subnet_ids.public-1.id}"
   vpc-id = "${module.vpc.vpc-id}"
 
   #IN CASE OF LAUNCHING EC2 IN SPECIFIC SUBNETS OR PRIVATE SUBNETS, PLEASE UN-COMMENT BELOW"

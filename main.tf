@@ -68,9 +68,9 @@ module "bastion-server" {
   associate-public-ip-address = "true"
 
   vpc-security-group-ids = "${module.sg-bastion.ec2-sg-security-group}"
-# ec2-subnets-ids = "${module.vpc.public-subnet-ids}"
+  #ec2-subnets-ids = "${module.vpc.public-subnet-ids}"
   ec2-subnets-ids = "${element(module.vpc.public-subnet-ids, 0)}"
-  vpc-id = "${module.vpc.vpc-id}"
+  #vpc-id = "${module.vpc.vpc-id}"
 
   #IN CASE OF LAUNCHING EC2 IN SPECIFIC SUBNETS OR PRIVATE SUBNETS, PLEASE UN-COMMENT BELOW"
   #ec2-subnets-ids = ["${module.cloudelligent-vpc.private-subnet-ids}"]

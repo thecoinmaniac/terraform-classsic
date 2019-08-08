@@ -56,6 +56,3 @@ output "aws-route-table-private-routes-id" {
 #   value = "${data.aws_subnet_ids.public-1.id}"
 # }
 
-output "public-1" {
-  value = "${data.aws_subnet_ids.public-1.id}"
-}

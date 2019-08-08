@@ -21,10 +21,6 @@ variable "associate-public-ip-address" {
   default = ""
 }
 
-variable "ec2-subnets-ids" {
-  default = ""
-}
-
 # variable "number-of-ec2-instances-required" {
 #   default = ""
 # }

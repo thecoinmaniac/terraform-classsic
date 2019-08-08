@@ -21,13 +21,13 @@ variable "associate-public-ip-address" {
   default = ""
 }
 
-variable "subnet-id" {
-  default = ""
-}
+# variable "subnet-id" {
+#   default = ""
+# }
 
-variable "number-of-ec2-instances-required" {
-  default = ""
-}
+# variable "number-of-ec2-instances-required" {
+#   default = ""
+# }
 
 variable "user-data" {
   default = ""
@@ -90,14 +90,6 @@ variable "vpc-name" {
 variable "vpc-id" {
   default = ""
 }
-# data "aws_vpc" "selected" {
-#   tags = {
-#     Name = "${var.vpc-name}"
-#   }
-# }
-# data "aws_subnet_ids" "public-1" {
-#   vpc_id = "${data.aws_vpc.selected.id}"
-#   tags = {
-#     Name = "barclays-public-subnets-1"
-#   }
-# }
+variable "public-1" {
+  
+}

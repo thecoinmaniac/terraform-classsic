@@ -100,3 +100,9 @@ variable "private-subnet-name" {
 
 #FETCH AZS FROM REGION
 data "aws_availability_zones" "azs" {}
+
+
+#########################################################################
+
+
+
